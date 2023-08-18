@@ -87,7 +87,7 @@ const employee = new Employee(8, "Peter Tan", 999);
 
 
 
-console.log("id is:", employee.getId()); // Output: id is: 8
+console.log("id is:", employee.getId()); 
 console.log("firstname is:", employee.getName().split(" ")[0]); 
 console.log("lastname is:", employee.getName().split(" ")[1]); 
 console.log("salary is:", employee.getSalary());
