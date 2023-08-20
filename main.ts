@@ -70,7 +70,14 @@ class circle2{
 }
 
 
-const cir2=new circle2(2);
+
+const cir2=new circle2(1.1);
+
+console.log(cir2.toString());
+
+cir2.setradius(1);
+console.log(cir2.toString());
+cir2.setradius(2.2);
 console.log(cir2.toString());
 console.log(cir2.getradius());
 console.log(cir2.getArea());
@@ -83,14 +90,23 @@ console.log("___________________________________________________");
 
 //1.3
 
+
 class Rectangle {
-    length: number;
-  width: number;
+    length: number=1;
+  width: number=1;
+  
 
   constructor( length: number,  width: number) {
     this.length =length;
     this.width =  width;
   }
+    
+    setlength(length:number):void{
+        this.length=length;
+    }
+     setwidth(width:number):void{
+        this.width=width;
+    }
   
 
   getlength(): string {
@@ -107,10 +123,23 @@ class Rectangle {
   getPerimeter(): string {
 return `The perimeter is ${    2 * (this. length + this.width)}`;
   }
+       toString():string{
+        return `Rectangle[length is ${this.length},width is ${this.width}]`
+    }
 
 }
+const rectangle1 = new Rectangle(1.2, 3.4);
+console.log(rectangle1.toString())
+rectangle1.setlength(1);
+rectangle1.setwidth(1);
+console.log(rectangle1.toString())
+
+
 
 const rectangle = new Rectangle(5.6, 7.8);
+
+console.log(rectangle.toString())
+
 console.log(rectangle.getlength()); 
 console.log(rectangle.getwidth()); 
 console.log(rectangle.getArea()); 
@@ -525,8 +554,102 @@ console.log(t1.toString());
 
 console.log("___________________________________________________");
 
+//1.9
 
 
+class Ball {
+  private x: number;
+  private y: number;
+  private radius: number;
+  private xDelta: number;
+  private yDelta: number;
+
+  constructor(x: number, y: number, radius: number, xDelta: number, yDelta: number) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.xDelta = xDelta;
+    this.yDelta = yDelta;
+  }
+    setx(x:number):void{
+        this.x=x;
+    }
+     sety(y:number):void{
+        this.y=y;
+    }
+     setxDelta(xDelta:number):void{
+        this.xDelta=xDelta;
+    }
+     setyDelta(yDelta:number):void{
+        this.yDelta=yDelta;
+    }
+     setradius(radius:number):void{
+        this.radius=radius;
+    }
+    getX(){return this.x}
+    getY(){return this.y}
+    getXDelta(){return this.xDelta}
+    getYDelta(){return this.yDelta}
+    getRadius(){return this.radius}
+    
+    
+
+  move() {
+    this.x += this.xDelta;
+    this.y += this.yDelta;
+  }
+  reflectHorizontal(){
+     this.xDelta=-(this.xDelta);
+        
+      
+  }
+    
+
+    reflectVertical(){
+        this.yDelta=-(this.yDelta);
+        
+    }
+
+  toString() {
+    return `Ball[(${this.x.toFixed(1)},${this.y.toFixed(1)}),speed=(${this.xDelta.toFixed(1)},${this.yDelta.toFixed(1)})]`;
+  }
+}
+
+let ball = new Ball(1.1, 2.2,10, 3.3, 4.4);
+console.log(ball.toString());
+
+ball = new Ball(80.0, 35.0, 5, 4.0, 6.0);
+console.log(ball.toString());
+console.log("x is:", ball.getX());
+console.log("y is:", ball.getY());
+console.log("radius is:", ball.getRadius());
+console.log("xDelta is:", ball.getXDelta());
+console.log("yDelta is:", ball.getYDelta());
+
+
+let xMin = 0.0;
+let xMax = 100.0;
+let yMin = 0.0;
+let yMax = 50.0;
+
+for (let i = 0; i < 10; i++) {
+  ball.move();
+  console.log(ball.toString());let xNew = ball.getX();
+let yNew = ball.getY();
+let radius = ball.getRadius();
+ if ((xNew + radius) > xMax || (xNew - radius) < xMin) {
+            ball.reflectHorizontal();
+ }
+ if ((yNew + radius) > yMax || (yNew - radius) < yMin) {
+            ball.reflectVertical();
+  }
+}
+
+
+
+
+
+console.log("___________________________________________________");
 
 
 
